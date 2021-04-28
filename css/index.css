@@ -43,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    opacity: .7;
+    opacity: .8;
     border-radius: 5px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -149,6 +149,7 @@ Header navbar that contains user image and name.
 }
 
 .right {
+    /* padding-top: 1.5rem; */
     display: flex;
     flex-direction: column;
     text-align: right;
@@ -170,6 +171,36 @@ Header navbar that contains user image and name.
     font-weight: 400;
     line-height: 1;
     letter-spacing: uppercase;
+}
+
+.bio__header {
+    position: relative;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0 0 3px 0;
+    margin-bottom: .9rem;
+    display: inline-block;
+}
+
+/*
+    For adding underline of header
+*/
+
+.bio__header:after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #555;
+    bottom: 0;
+    left: 0;
+}
+
+.bio__content {
+    color: #666;
+    font-weight: 300;
+    line-height: 1.7;
 }
 
 /*
