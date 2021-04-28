@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    box-sizing: border-box;
 }
 
 /*  
@@ -31,15 +32,105 @@ body {
     max-width: 1500px;
     width: 70%;
     display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.profile_card {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile_card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 270px;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to top, #4c4177 0%, #2a5470 74%);
+    clip-path: circle(400px at 50% -48.5%);
+}
+
+/*
+Header navbar that contains user image and name.
+*/
+
+.profile_card__header {
+    position: absolute;
+    width: 100%;
+    height: 265px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+}
+
+/*
+    Avatar container that contians the avatar and git logo.
+*/
+
+.avatar_container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+/*
+    The user avatar. set it border and size.
+*/
+
+.avatar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #0d324d;
+}
+
+/*
+    hover image that comes on avatar image. 
+*/
+
+.hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 50, 77, 0.7);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/*  
+    When hover the avatar see the git icon. 
+*/
+
+.hover:hover {
+    transition: .5s;
+    opacity: 1;
 }
 
 /*
     This is the error container. 
 */
-.error {    
+
+.error {
     position: fixed;
     border: 1px solid;
     border-radius: 10px;
@@ -52,4 +143,9 @@ body {
     background-image: url("../images/error.png");
     bottom: 0;
     left: 0;
+    visibility: hidden;
+}
+
+.error.active {
+    visibility: visible;
 }
