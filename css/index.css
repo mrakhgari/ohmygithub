@@ -562,7 +562,7 @@ a.item__text:hover {
     }
     .card {
         max-width: 400px;
-        width: 80%;
+        width: 95%;
         margin-top: 5%;
     }
     .fullscreen {
@@ -575,5 +575,21 @@ a.item__text:hover {
     .search_wrapper {
         max-width: 360px;
         width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile_card__content {
+        flex-direction: column;
+    }
+    
+    .right {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .info {
+        margin: 0 5px;
     }
 }
