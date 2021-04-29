@@ -384,8 +384,6 @@ for this. we had two div. left and right, we use this selector to arrange right 
 .left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 
 /* style of location and blog div . by default is none. after req we set it to flex.*/
