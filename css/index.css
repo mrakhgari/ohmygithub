@@ -563,4 +563,8 @@ a.item__text:hover {
     .card {
         margin-top: 5%;
     }
+    .fullscreen {
+        left: 0;
+        top: 0;
+    }
 }
