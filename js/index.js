@@ -110,6 +110,12 @@ function setLocation(userData) {
     }
 }
 
+// add http to start of link
+const getClickableLink = link => {
+    return link.startsWith("http://") || link.startsWith("https://") ?
+        link
+        : `http://${link}`;
+};
 
 function setBlog(userData) {
     if (userData.blog == "") {
@@ -118,7 +124,7 @@ function setBlog(userData) {
     } else {
         blogDiv.style.display = "flex";
         blogUrl.innerHTML = userData.blog;
-        blogUrl.href = userData.blog;
+        blogUrl.href = getClickableLink(userData.blog);
     }
 }
 
