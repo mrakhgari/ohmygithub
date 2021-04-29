@@ -13,7 +13,7 @@ const locationDiv = document.querySelector('.location');
 const locationText = document.querySelector('.location > .item__text');
 const blogDiv = document.querySelector('.webpage');
 const blogUrl = document.querySelector('.webpage > .item__text');
-
+const error = document.querySelector('.error');
 
 function show() {
     hoverIcon.classList.add('active');
@@ -36,14 +36,26 @@ function blurOnInputbar() {
         parent.classList.remove('focus');
 }
 
+function showErrorMessage(response) {
+    console.log(response);
+    error.classList.add('active');
+    error.innerHTML = response.message;
+    setTimeout(() => {
+        error.classList.remove('active');
+    }, 4000)
+}
+
+
 async function getUserData(username) {
     console.log("request");
     try {
         let response = await fetch(`https://api.github.com/users/${username}`)
+        let json = await response.json();
         if (response.status == 200) {
-            return response.json();
+            return json
         }
-        return Promise.reject(`Request failed with error ${response.status}`)
+        showErrorMessage(json);
+        return Promise.reject(`Request failed with error ${response.status}`);
     } catch (e) {
         console.log(e);
     }
