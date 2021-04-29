@@ -556,7 +556,7 @@ a.item__text:hover {
     transform: translate(-50%, -50%) rotate(315deg);
 }
 
-@media (max-width: 700px)  {
+@media (max-width: 1150px)  {
     .container {
         flex-direction: column;
     }
