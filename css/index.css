@@ -12,7 +12,7 @@
 */
 
 body {
-    background: url("../images/background.png") no-repeat center center fixed;
+    background: url("../images/background2.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -39,13 +39,13 @@ body {
 
 .search_card {
     position: relative;
-    width: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    opacity: .8;
+    opacity: .9;
     border-radius: 5px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -161,7 +161,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    opacity: .8;
+    opacity: .9;
     border-radius: 5px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -276,7 +276,7 @@ Header navbar that contains user image and name.
     flex-direction: column;
     text-align: right;
     align-items: flex-end;
-    margin-left: 2.1rem;
+    margin-left: auto;
 }
 
 .info__number {
@@ -300,7 +300,7 @@ Header navbar that contains user image and name.
 }
 
 .item {
-    display: flex;
+    display: none;
     padding: .1rem 0;
 }
 
@@ -355,6 +355,7 @@ a.item__text:hover {
     font-weight: 300;
     line-height: 1.7;
     margin-bottom: 1.2rem;
+    white-space: pre-line;
 }
 
 /*
