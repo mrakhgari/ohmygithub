@@ -265,6 +265,12 @@ Header navbar that contains user image and name.
     opacity: .8;
 }
 
+.lang {
+    font-size: .9rem;
+    color: white;
+    opacity: .7;
+}
+
 .profile_card__content {
     display: flex;
     padding: 1.7rem 2.5rem 2.6rem 2.5rem;
@@ -357,6 +363,7 @@ a.item__text:hover {
     margin-bottom: 1.2rem;
     white-space: pre-line;
 }
+
 
 /*
     This is the error container. 

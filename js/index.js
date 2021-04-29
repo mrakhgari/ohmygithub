@@ -14,6 +14,8 @@ const locationText = document.querySelector('.location > .item__text');
 const blogDiv = document.querySelector('.webpage');
 const blogUrl = document.querySelector('.webpage > .item__text');
 const error = document.querySelector('.error');
+const languageDiv = document.querySelector(".lang");
+const language = document.querySelector(".lang > span");
 
 function show() {
     hoverIcon.classList.add('active');
@@ -117,6 +119,41 @@ function fillProfileCard(userData) {
     setBlog(userData);
 }
 
+async function getRepos(username) {
+    try {
+        let response = await fetch(`https://api.github.com/users/${username}/repos`);
+        let json = await response.json();
+        if (response.status != 200) {
+            showErrorMessage(json);
+            return Promise.reject(`Request failed with error ${response.status}`);
+        }
+        return json;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+async function findPopLang(username) {
+    languageDiv.style.display = "none";
+    let repos = await getRepos(username);
+    // sort repos by time of push and get 0:5 repos. 
+    repos = repos.sort(function (a, b) {
+        return b.pushed_at.localeCompare(a.pushed_at);
+    }).slice(0, 5);
+
+    // get populare repository.
+    let popRepo = [...repos.reduce((op, inp) => {
+        let lang = inp.language;
+        op.set(lang, (op.get(lang) || 0) + 1)
+        return op
+    }, new Map()).entries()][0][0];
+
+    // set in html
+    language.innerHTML = popRepo;
+    languageDiv.style.display = "block";
+
+}
+
 async function sendRequest(e) {
     console.log("clicked on submit");
     let username = usernameInput.value;
@@ -128,7 +165,8 @@ async function sendRequest(e) {
     let userData;
     userData = await JSON.parse(window.localStorage.getItem(username));
     if (userData == null) {
-        userData = await getUserData(usernameInput.value);
+        userData = await getUserData(username);
+        findPopLang(username);
         window.localStorage.setItem(username, JSON.stringify(userData));
     }
     fillProfileCard(userData);
