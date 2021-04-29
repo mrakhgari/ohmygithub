@@ -556,15 +556,24 @@ a.item__text:hover {
     transform: translate(-50%, -50%) rotate(315deg);
 }
 
-@media (max-width: 1300px)  {
+@media (max-width: 1300px) {
     .container {
         flex-direction: column-reverse;
     }
     .card {
+        max-width: 400px;
+        width: 80%;
         margin-top: 5%;
     }
     .fullscreen {
         left: 0;
         top: 0;
+    }
+    .search_card__header {
+        font-size: 2rem;
+    }
+    .search_wrapper {
+        max-width: 360px;
+        width: 80%;
     }
 }
