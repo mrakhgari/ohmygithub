@@ -33,8 +33,126 @@ body {
     width: 70%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
     min-height: 100vh;
+}
+
+.search_card {
+    position: relative;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.search_wrapper {
+    width: 360px;
+}
+
+.search-div {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #c4c4c4;
+}
+
+.search-div>i {
+    color: #c4c4c4;
+}
+
+.search-div>div {
+    position: relative;
+}
+
+.search-div:after, .search-div:before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #4c4177;
+}
+
+.search-div:after {
+    right: 50%;
+}
+
+.search-div:before {
+    left: 50%;
+}
+
+.search-div__label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.2rem;
+    transition: .3s;
+}
+
+.search-div.focus.search-div>i {
+    color: #4c4177;
+}
+
+.search-div.focus .search-div__label {
+    top: -6px;
+    font-size: 15px;
+}
+
+.search-div.focus:after, .search-div.focus:before {
+    width: 50%;
+}
+
+.search_wrapper__button {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #4c4177 0%, #2a5470 74%);
+    cursor: pointer;
+    color: white;
+    background-size: 200%;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+.search_wrapper__button:hover {
+    background-position: right;
+}
+
+.search-div__input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: .5rem .7rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.search_card__header {
+    font-size: 2.9rem;
+    text-transform: uppercase;
+    margin: 15px 0;
+    color: #333;
 }
 
 .profile_card {
@@ -158,7 +276,6 @@ Header navbar that contains user image and name.
     flex-direction: column;
     text-align: right;
     align-items: flex-end;
-    /* justify-content: space-around; */
     margin-left: 2.1rem;
 }
 
