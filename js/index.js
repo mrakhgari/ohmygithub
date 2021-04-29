@@ -37,10 +37,12 @@ function blurOnInputbar() {
 }
 
 async function getUserData(username) {
+    console.log("request");
     try {
         let response = await fetch(`https://api.github.com/users/${username}`)
-        if (response.status == 200)
+        if (response.status == 200) {
             return response.json();
+        }
         return Promise.reject(`Request failed with error ${response.status}`)
     } catch (e) {
         console.log(e);
@@ -111,7 +113,12 @@ async function sendRequest(e) {
         return;
     }
     e.preventDefault();
-    let userData = await getUserData(usernameInput.value);
+    let userData;
+    userData = await JSON.parse(window.localStorage.getItem(username));
+    if (userData == null) {
+        userData = await getUserData(usernameInput.value);
+        window.localStorage.setItem(username, JSON.stringify(userData));
+    }
     fillProfileCard(userData);
 }
 
@@ -120,3 +127,4 @@ closeButton.addEventListener('click', hide);
 usernameInput.addEventListener('focus', focusOnInputbar);
 usernameInput.addEventListener('blur', blurOnInputbar);
 searchButton.addEventListener('click', sendRequest);
+window.localStorage.clear(); // used for remove catch in refresh
