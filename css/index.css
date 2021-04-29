@@ -12,7 +12,7 @@
 */
 
 body {
-    background: url("../images/background2.png") no-repeat center center fixed;
+    background: url("../images/background.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -51,7 +51,7 @@ body {
     flex-direction: column;
     background-color: #fff;
     opacity: .9;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
