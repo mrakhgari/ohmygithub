@@ -37,7 +37,14 @@ body {
     min-height: 100vh;
 }
 
-.search_card {
+/*
+    The left and right side card. 
+    In this card we holds children. 
+    (for example in left card we hold the header, search bar and button.)
+    we used flex as display.
+*/
+
+.card {
     position: relative;
     width: 400px;
     display: flex;
@@ -51,9 +58,18 @@ body {
     overflow: hidden;
 }
 
+/*
+    In this selector, we changed the width of search bar. 
+*/
+
 .search_wrapper {
     width: 360px;
 }
+
+/*
+    In this selector, we used grid layout to arrange the elements in search bar (the user icon and input field). 
+    In addition to we removed the border of input field and added a border in bottom of it.
+*/
 
 .search-div {
     position: relative;
@@ -64,13 +80,26 @@ body {
     border-bottom: 2px solid #c4c4c4;
 }
 
+/*
+    In this selector, we changed the color of user icon (left side of input field).. 
+*/
+
 .search-div>i {
     color: #c4c4c4;
 }
 
+/*
+    In this selector, we set the position of all div children of search div.
+*/
+
 .search-div>div {
     position: relative;
 }
+
+/*
+    We created a line in the bottom of search bar with #4c4177 color.
+    by default the line is deactiveate (width = 0). when we focus on the search bar, we can see the line (we set the line in .search-div:after and .search-div:before selector). 
+*/
 
 .search-div:after, .search-div:before {
     content: '';
@@ -81,6 +110,10 @@ body {
     background-color: #4c4177;
 }
 
+/*
+    For show the bottom border of search bar.
+ */
+
 .search-div:after {
     right: 50%;
 }
@@ -88,6 +121,24 @@ body {
 .search-div:before {
     left: 50%;
 }
+
+/* For show the bottom border of search bar. (in focus)*/
+
+.search-div.focus:after, .search-div.focus:before {
+    width: 50%;
+}
+
+/*
+    For change the color of user icon in focus mode.
+*/
+
+.search-div.focus.search-div>i {
+    color: #4c4177;
+}
+
+/*
+    Set the label of searchbar (USERNAME TEXT).
+*/
 
 .search-div__label {
     position: absolute;
@@ -99,18 +150,18 @@ body {
     transition: .3s;
 }
 
-.search-div.focus.search-div>i {
-    color: #4c4177;
-}
+/*
+    Change location of label. (in focus mode)
+*/
 
 .search-div.focus .search-div__label {
     top: -6px;
     font-size: 15px;
 }
 
-.search-div.focus:after, .search-div.focus:before {
-    width: 50%;
-}
+/* 
+    Style for search button, we set the width by it's parent, and change the color to gradient. you can see other styles in this selector. 
+*/
 
 .search_wrapper__button {
     display: block;
@@ -129,9 +180,17 @@ body {
     text-transform: uppercase;
 }
 
+/* 
+    For better experience (hover mode).
+*/
+
 .search_wrapper__button:hover {
     background-position: right;
 }
+
+/*
+    Setup the search bar, we remove the border and set the width of it.
+*/
 
 .search-div__input {
     position: absolute;
@@ -148,6 +207,10 @@ body {
     color: #555;
 }
 
+/*
+    For styling the "Oh My Github text".
+*/
+
 .search_card__header {
     font-size: 2.9rem;
     text-transform: uppercase;
@@ -155,17 +218,9 @@ body {
     color: #333;
 }
 
-.profile_card {
-    position: relative;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    opacity: .9;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
+/*
+    To add color to the top of profile card. For beauty only.
+*/
 
 .profile_card::before {
     content: '';
@@ -239,7 +294,7 @@ Header navbar that contains user image and name.
 }
 
 /*  
-    When hover the avatar see the git icon. 
+    When hover the avatar see the camera icon. 
 */
 
 .hover:hover {
@@ -247,9 +302,17 @@ Header navbar that contains user image and name.
     opacity: 1;
 }
 
+/*
+    hover icon set to active in fullscreen mode of image.
+*/
+
 .hover.active {
     opacity: 1;
 }
+
+/* 
+    Set username of user. 
+*/
 
 .name {
     font-size: 1.2rem;
@@ -259,11 +322,15 @@ Header navbar that contains user image and name.
     margin: 5px 0;
 }
 
+/* Set id. */
+
 .id {
     font-size: 1rem;
     color: white;
     opacity: .8;
 }
+
+/* set language */
 
 .lang {
     font-size: .9rem;
@@ -271,10 +338,15 @@ Header navbar that contains user image and name.
     opacity: .7;
 }
 
+/* down side of profile card, that contains the bio, follower, following, repos count, location and  the blog divs. 
+for this. we had two div. left and right, we use this selector to arrange right and left divs.*/
+
 .profile_card__content {
     display: flex;
     padding: 1.7rem 2.5rem 2.6rem 2.5rem;
 }
+
+/* look at .profile_card__content */
 
 .right {
     padding-top: 1.5rem;
@@ -285,12 +357,16 @@ Header navbar that contains user image and name.
     margin-left: auto;
 }
 
+/* style of followers count, followings count and repo count */
+
 .info__number {
     font-size: 2.1rem;
     font-weight: 200;
     color: #333;
     line-height: 1.2;
 }
+
+/* style of followers label, followings label and repo label */
 
 .info__title {
     font-size: .55rem;
@@ -300,15 +376,21 @@ Header navbar that contains user image and name.
     letter-spacing: uppercase;
 }
 
+/* look at .profile_card__content */
+
 .left {
     display: flex;
     flex-direction: column;
 }
 
+/* style of location and blog div . by default is none. after req we set it to flex.*/
+
 .item {
     display: none;
     padding: .1rem 0;
 }
+
+/* icon of location and blog */
 
 .icon {
     color: #c4c4c4;
@@ -319,6 +401,8 @@ Header navbar that contains user image and name.
     left: 0;
 }
 
+/* text of location and blog */
+
 .item__text {
     font-weight: 100;
     text-align: center;
@@ -328,9 +412,13 @@ Header navbar that contains user image and name.
     text-decoration: none;
 }
 
+/* change color when mouse enter the blog url */
+
 a.item__text:hover {
     color: #4facfe;
 }
+
+/* Style of "Bio" text */
 
 .bio__header {
     position: relative;
@@ -356,6 +444,8 @@ a.item__text:hover {
     left: 0;
 }
 
+/* text of user bio. */
+
 .bio__content {
     color: #666;
     font-weight: 300;
@@ -363,7 +453,6 @@ a.item__text:hover {
     margin-bottom: 1.2rem;
     white-space: pre-line;
 }
-
 
 /*
     This is the error container. 
@@ -385,9 +474,13 @@ a.item__text:hover {
     visibility: hidden;
 }
 
+/* active the error message */
+
 .error.active {
     visibility: visible;
 }
+
+/* when you click on avatar, you can see the avatar in fullscreen mode. for this, we used an image with z-index=-1 and set it to 99 when user click on it. */
 
 .fullscreen {
     position: fixed;
@@ -408,6 +501,8 @@ a.item__text:hover {
     transition: .5s;
 }
 
+/* for showing image in fullscreen mode */
+
 .fullscreen.show {
     opacity: 1;
     z-index: 99;
@@ -417,6 +512,8 @@ a.item__text:hover {
     top: 50%;
     transform: translate(-50%, -50%) scale(1);
 }
+
+/* for return from fullscreen mode, we need to create a close (cross) button, so we create it by css. */
 
 .close {
     position: absolute;
@@ -431,6 +528,8 @@ a.item__text:hover {
     opacity: .5;
 }
 
+/* for draw the cross */
+
 .close:before, .close:after {
     content: '';
     position: absolute;
@@ -442,9 +541,13 @@ a.item__text:hover {
     background-color: #fff;
 }
 
+/* add / to cross  */
+
 .close:before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
+
+/* add \ to cross  */
 
 .close:after {
     transform: translate(-50%, -50%) rotate(315deg);

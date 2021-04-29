@@ -17,41 +17,47 @@ const error = document.querySelector('.error');
 const languageDiv = document.querySelector(".lang");
 const language = document.querySelector(".lang > span");
 
+// for show avatar in fullscreen mode.
 function show() {
     hoverIcon.classList.add('active');
     fullscreen.classList.add('show');
 }
 
+// for hide avatar
 function hide() {
     hoverIcon.classList.remove('active');
     fullscreen.classList.remove('show');
 }
 
+// set focus in search bar. (we add focus class and the css handle it :)) )
 function focusOnInputbar() {
     let parent = this.parentNode.parentNode;
     parent.classList.add('focus');
 }
 
+// remove focus class from search bar
 function blurOnInputbar() {
     let parent = this.parentNode.parentNode;
     if (this.value == "")
         parent.classList.remove('focus');
 }
 
+// for handle status code error
 function handleError(response) {
     showErrorMessage(response.message);
 }
 
+// displays each given message as an error message 
 function showErrorMessage(message) {
     console.log(message);
     error.classList.add('active');
     error.innerHTML = message;
-    setTimeout(() => {
+    setTimeout(() => { // removes the error message from screen after 4 seconds.
         error.classList.remove('active');
     }, 4000)
 }
 
-
+// get user data from API and return the json value.
 async function getUserData(username) {
     console.log("request");
     try {
@@ -68,12 +74,14 @@ async function getUserData(username) {
     }
 }
 
+// set avatar in view
 function setAvatar(avatar) {
     for (avatarImage of avatarImages) {
         avatarImage.src = avatar;
     }
 }
 
+// set name in view
 function setName(userData) {
     username.innerHTML = userData.name;
     userId.innerHTML = userData.login;
@@ -86,6 +94,7 @@ function setBio(userData) {
         bio.innerHTML = userData.bio;
 }
 
+// Sets followers, following and repo counts.
 function setStats(userData) {
     stats[0].innerHTML = userData.followers;
     stats[1].innerHTML = userData.following;
@@ -113,7 +122,7 @@ function setBlog(userData) {
     }
 }
 
-
+// fill user data in view .
 function fillProfileCard(userData) {
     console.log(userData);
     setAvatar(userData.avatar_url);
@@ -124,6 +133,7 @@ function fillProfileCard(userData) {
     setBlog(userData);
 }
 
+// get all repositories of user and return json.
 async function getRepos(username) {
     try {
         let response = await fetch(`https://api.github.com/users/${username}/repos`);
@@ -139,6 +149,7 @@ async function getRepos(username) {
     }
 }
 
+// set popular repository in view.
 async function findPopLang(username) {
     languageDiv.style.display = "none";
     let repos = await getRepos(username);
@@ -160,6 +171,7 @@ async function findPopLang(username) {
 
 }
 
+// the process of sending data and fill it in view.
 async function sendRequest(e) {
     console.log("clicked on submit");
     let username = usernameInput.value;
