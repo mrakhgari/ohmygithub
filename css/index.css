@@ -556,8 +556,11 @@ a.item__text:hover {
     transform: translate(-50%, -50%) rotate(315deg);
 }
 
-@media (max-width: 1150px)  {
+@media (max-width: 1300px)  {
     .container {
-        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+    .card {
+        margin-top: 5%;
     }
 }
