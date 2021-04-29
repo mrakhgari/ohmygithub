@@ -38,10 +38,14 @@ function blurOnInputbar() {
         parent.classList.remove('focus');
 }
 
-function showErrorMessage(response) {
-    console.log(response);
+function handleError(response) {
+    showErrorMessage(response.message);
+}
+
+function showErrorMessage(message) {
+    console.log(message);
     error.classList.add('active');
-    error.innerHTML = response.message;
+    error.innerHTML = message;
     setTimeout(() => {
         error.classList.remove('active');
     }, 4000)
@@ -56,9 +60,10 @@ async function getUserData(username) {
         if (response.status == 200) {
             return json
         }
-        showErrorMessage(json);
+        handleError(json);
         return Promise.reject(`Request failed with error ${response.status}`);
     } catch (e) {
+        showErrorMessage(e);
         console.log(e);
     }
 }
@@ -124,12 +129,13 @@ async function getRepos(username) {
         let response = await fetch(`https://api.github.com/users/${username}/repos`);
         let json = await response.json();
         if (response.status != 200) {
-            showErrorMessage(json);
+            handleError(json);
             return Promise.reject(`Request failed with error ${response.status}`);
         }
         return json;
     } catch (e) {
         console.log(e);
+        showErrorMessage(e);
     }
 }
 
@@ -166,6 +172,8 @@ async function sendRequest(e) {
     userData = await JSON.parse(window.localStorage.getItem(username));
     if (userData == null) {
         userData = await getUserData(username);
+        if (userData == null)
+            return;
         findPopLang(username);
         window.localStorage.setItem(username, JSON.stringify(userData));
     }
@@ -177,4 +185,4 @@ closeButton.addEventListener('click', hide);
 usernameInput.addEventListener('focus', focusOnInputbar);
 usernameInput.addEventListener('blur', blurOnInputbar);
 searchButton.addEventListener('click', sendRequest);
-window.localStorage.clear(); // used for remove catch in refresh
+window.localStorage.clear(); // used for remove cache in refresh
