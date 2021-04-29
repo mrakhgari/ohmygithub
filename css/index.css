@@ -49,13 +49,16 @@ body {
     width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #fff;
     opacity: .9;
     border-radius: 5px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+}
+
+.search_card {
+    justify-content: center;
+    align-items: center;
 }
 
 /*
@@ -381,6 +384,8 @@ for this. we had two div. left and right, we use this selector to arrange right 
 .left {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* style of location and blog div . by default is none. after req we set it to flex.*/
