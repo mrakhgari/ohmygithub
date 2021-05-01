@@ -556,6 +556,8 @@ a.item__text:hover {
     transform: translate(-50%, -50%) rotate(315deg);
 }
 
+/* set responsive */
+
 @media (max-width: 1300px) {
     .container {
         flex-direction: column-reverse;
@@ -582,13 +584,11 @@ a.item__text:hover {
     .profile_card__content {
         flex-direction: column;
     }
-    
     .right {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-
     .info {
         margin: 0 5px;
     }

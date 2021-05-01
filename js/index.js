@@ -164,15 +164,20 @@ async function findPopLang(username) {
         return b.pushed_at.localeCompare(a.pushed_at);
     }).slice(0, 5);
 
-    // get populare repository.
+    if (repos.length == 0)
+        return;
+    // get popular repository.
     let popRepo = [...repos.reduce((op, inp) => {
         let lang = inp.language;
         op.set(lang, (op.get(lang) || 0) + 1)
         return op
-    }, new Map()).entries()][0][0];
-
+    }, new Map()).entries()];
+    
+    popRepo.sort(function (a, b) {
+        return b[1] - a[1];
+    });
     // set in html
-    language.innerHTML = popRepo;
+    language.innerHTML = popRepo[0][0];
     languageDiv.style.display = "block";
 
 }
@@ -195,6 +200,7 @@ async function sendRequest(e) {
         findPopLang(username);
         window.localStorage.setItem(username, JSON.stringify(userData));
     }
+    findPopLang(username);
     fillProfileCard(userData);
 }
 
